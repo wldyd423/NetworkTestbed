@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  front:
+    build: base/
+    networks:
+      frontend:
+        ipv4_address: 10.0.1.100
+    command: tail -F hidden
+  
+  gate:
+    build: base/
+    networks:
+      frontend:
+        ipv4_address: 10.0.1.200
+      backend:
+        ipv4_address: 10.0.2.200
+    command: tail -F hidden
+  
+  back:
+    build: base/
+    networks:
+      backend:
+        ipv4_address: 10.0.2.100
+    command: tail -F hidden
+
+networks:
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.1.0/24
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.2.0/24
