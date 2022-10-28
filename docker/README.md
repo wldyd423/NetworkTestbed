@@ -1,0 +1,1 @@
+This is a practice project to see how everything works. Very new to docker.
