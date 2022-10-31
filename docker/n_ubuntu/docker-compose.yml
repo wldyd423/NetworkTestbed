@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  cli:
+    build: base/
+    networks:
+      frontend:
+        ipv4_address: 172.30.1.123
+    command: tail -F hidden
+  
+  ser:
+    build: base/
+    networks:
+      frontend:
+        ipv4_address: 172.30.1.111
+    command: tail -F hidden
+      
+networks:
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.1.0/24
