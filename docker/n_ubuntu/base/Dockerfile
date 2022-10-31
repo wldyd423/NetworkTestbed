@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-COPY ./app /usr/wldyd
+COPY ./app /home/wldyd
 WORKDIR /home/wldyd
 
 RUN apt update && \
